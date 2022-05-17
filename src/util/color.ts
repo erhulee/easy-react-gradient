@@ -1,0 +1,38 @@
+function fillColor(color:string){
+    return `rgba${color}`
+}
+
+export function createDeg(direction:string){
+    // 1. 固定的方位: to right , to top, to left, to bottom
+    direction = direction.trim();
+    const regex = /^to\s+([\d\D]*)/
+    const numberRegex = /^([\d]*)deg/
+    if(regex.test(direction)){
+        let result = direction.match(regex);
+        if(result == null) return;
+        let orient = result[1]
+        switch(orient){
+            case 'right':
+                return '90deg'
+            case 'left':
+                return '270deg'
+            case 'top':
+                return '0deg'
+            case 'bottom':
+                return '180deg'
+        }
+    }else if(numberRegex.test(direction)){
+        return direction;
+    }else{
+        return ""
+    }
+}
+export function createColor(colors:string[]){ // [(233,423,455,0.4)]
+    // rgb/十六进制 转 rgba
+    const OX_regex = /#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})/g; 
+    const RGB_regex = /^rgb\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*\)/;
+    const RGBA_regex = /^rgba\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1}\.*\d*\s*\)/;
+    colors = colors.filter(color => OX_regex.test(color)||RGB_regex.test(color)||RGBA_regex.test(color))
+    console.log(colors)
+    return colors.join(',')
+}

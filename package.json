@@ -1,0 +1,31 @@
+{
+  "name": "easy-gradient-react",
+  "version": "1.0.4",
+  "main": "lib/bundle.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn run rollup -c",
+    "dev": "yarn run rollup -c -w"
+  },
+  "dependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "acorn-jsx": "^5.3.2",
+    "babel-plugin-styled-components": "^2.0.7",
+    "rollup": "^2.71.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "styled-components": "^5.3.5",
+    "typescript": "^4.6.4"
+  },
+  "devDependencies": {
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^2.4.0"
+  }
+}
