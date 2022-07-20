@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { createColor, createDeg } from '../../util/color'
 import styled from 'styled-components'
 type strokeConfig = {
@@ -14,14 +14,14 @@ type shadowConfig = {
     direction: string
 }
 
-type GradientTextProps = {
-    content:string,
+type GradientTextProps = PropsWithChildren<{
+    content?:string,
     colors?:string[],
     direction?: string,
     custom?:any,
     stroke?:strokeConfig,
     shadow?:shadowConfig
-}
+}> 
 
 function translateCustom(source:any){
     if(source == null) return ""
@@ -35,8 +35,10 @@ function translateCustom(source:any){
 
 
 
-function GradientText({content,colors=['rgba(0,0,0,1)','rgba(0,0,0,1)'],direction='90deg', custom, stroke, shadow}:GradientTextProps){
-    console.log(colors)
+function GradientText(props:GradientTextProps){
+    const {content,colors=['rgba(0,0,0,1)','rgba(0,0,0,1)'],direction='90deg', custom, stroke, shadow, children} = props
+    const renderContent = children ?? content;
+
     const Content = styled.div`
         background-image: linear-gradient(${createDeg(direction)},${createColor(colors)});
         -webkit-background-clip: text;
@@ -90,7 +92,7 @@ function GradientText({content,colors=['rgba(0,0,0,1)','rgba(0,0,0,1)'],directio
                 </Shadow>} */}
 
             <Content>
-                {content}
+                {renderContent}
             </Content>
             {/* {stroke && <Stroke>
                 {content}

@@ -30,15 +30,18 @@ export function createDeg(direction:string){
     }
 }
 export function createColor(colors:string[]){ // [(233,423,455,0.4)]
+    console.log(colors)
     // rgb/十六进制 转 rgba
-    const OX_regex = /#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})/g; 
-    const RGB_regex = /^rgb\(\s*\d{1,3}(\.\d*)?\s*,\s*\d{1,3}(\.\d*)?\s*,\s*\d{1,3}(\.\d*)?\s*\)/g;
+    const OX_regex = /#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})/; 
+    const RGB_regex = /^rgb\(\s*\d{1,3}(\.\d*)?\s*,\s*\d{1,3}(\.\d*)?\s*,\s*\d{1,3}(\.\d*)?\s*\)/;
     const RGBA_regex = /^rgba\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1}\.*\d*\s*\)/;
 
     // 处理 rgba(r,g,b) 漏 a
     // 处理 rga(r,g,b,a) 多 a
     const ERROR_RGB_regex =  /^rgb\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*\)/;
 
-    colors = colors.filter(color => OX_regex.test(color)||RGB_regex.test(color)||RGBA_regex.test(color))
+
+    colors = colors.filter(color =>  OX_regex.test(color)||RGB_regex.test(color)||RGBA_regex.test(color))
+    console.log(colors)
     return colors.join(',')
 }
