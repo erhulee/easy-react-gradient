@@ -13,7 +13,7 @@ type GradientRectangleProps = PropsWithChildren<{
 }> 
 
 export default function GradientRectangle(props:GradientRectangleProps){
-    const {colors=['#000','#c61212'], direction='90deg', radius='0px', width = "2px", children} = props   
+    const {colors=['#000','#000'], direction='90deg', radius='0px', width = "2px", children} = props   
     const Wapper = styled.div`
         position: relative;
         border-radius: ${radius};
